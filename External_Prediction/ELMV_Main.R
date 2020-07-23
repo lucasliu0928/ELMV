@@ -66,18 +66,6 @@ Hidden_IDs_df <- read.csv(paste0(ID_data_dir, "hiddenSets_IDs.csv"),stringsAsFac
 Hidden_IDs <- Hidden_IDs_df$x
 
 
-
-n_of_label_class <- 3
-
-Final_acc <- NA
-Final_submodels_avg_acc <- NA
-n_of_pred_pts <-NA
-nof_aval_subsets <- NA
-Final_acc2 <- NA #for checking copy most sim pts label #could be delete
-n_of_pred_pts2<- NA #for checking copy most sim pts label  #could be delete
-
-start_time <- Sys.time()
-
 all_data <- read.csv(paste0(data_dir, file_names),stringsAsFactors = F)
 rownames(all_data) <- all_data$X
 all_data <- all_data[,-1]
@@ -86,17 +74,15 @@ train_data <- all_data[which(rownames(all_data) %in% train_IDs),]
 test_data <- all_data[which(rownames(all_data) %in% test_IDs),]
 hidden_data <- all_data[which(rownames(all_data) %in% Hidden_IDs),]
   
-
-Final_predictions <- ELMV_Prediction_func(train_data,test_data,outcome_name,hidden_data,hamming_weight,fdist_weight,K_1,K_2)
+start_time <- Sys.time()
+n_of_label_class <- 3
+outcome_name <- "Species"
+hamming_weight <- 0.8
+fdist_weight <- 0.2
+K_1 <- 5
+K_2 <- 0.5
+Final_predictions <- ELMV_Prediction_func(train_data,test_data,outcome_name,n_of_label_class,hidden_data,hamming_weight,fdist_weight,K_1,K_2)
 end_time <- Sys.time()
-
 total_time <- end_time - start_time
-avg_time <- total_time / length(missing_percs)
-avg_time #
-
-nof_aval_subsets
-round(Final_acc,2)
-30-n_of_pred_pts
-round(Final_submodels_avg_acc,2)
 
 
