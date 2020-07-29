@@ -321,7 +321,6 @@ prediction_func <- function(train_sets,data_tobe_predicted,feature_selected,outc
 
 ELMV_Prediction_func <- function(train_data,test_data,outcome_name,hidden_data,hamming_weight,fdist_weight,K_1,K_2){
   ## Get hidden data mising matrix 06/01 for external prediction use
-  outcome_name <- "Species"
   hidden_data_without_outcome <- hidden_data[, -which(colnames(hidden_data)==outcome_name)]
   hidden_data_m_df <- as.data.frame(matrix(NA, nrow = nrow(hidden_data_without_outcome), ncol = ncol(hidden_data_without_outcome)))
   colnames(hidden_data_m_df) <- colnames(hidden_data_without_outcome)
