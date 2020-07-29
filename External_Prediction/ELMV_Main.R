@@ -3,13 +3,24 @@ working_dir <- dirname(rstudioapi::getSourceEditorContext()$path)
 source("ELMV_Functions.R")
 ##User input
 output_dir <- paste0(working_dir,"/Output/")
-Train_Data<- Train_Data[,-outcome_name_index] #Exlucde outcome ID
+data_dir <- ""
+file_names <- ""
+
+all_data <- read.csv(paste0(data_dir, file_names),stringsAsFactors = F)
+rownames(all_data) <- all_data$X
+all_data <- all_data[,-1]
+
+train_Data <- all_data[which(rownames(all_data) %in% train_IDs),]
+test_data <- all_data[which(rownames(all_data) %in% test_IDs),]
+hidden_data <- all_data[which(rownames(all_data) %in% Hidden_IDs),]
+
+train_Data<- train_Data[,-outcome_name_index] #Exlucde outcome ID
 
 
 ####################################################################################
 ####      S1.Generate Maximal Subsets  using Dynamic Programming
 ####################################################################################
-heatmap_sublist_output<-generate_heat_map_func(Train_Data)
+heatmap_sublist_output<-generate_heat_map_func(train_Data)
 ##Heat map
 heatmap<-heatmap_sublist_output[[1]]
 colnames(heatmap)<-paste0(seq(1,ncol(heatmap)),"_fts")
