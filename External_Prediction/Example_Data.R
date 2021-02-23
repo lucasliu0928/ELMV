@@ -1,5 +1,5 @@
-data_dir <- "/Users/lucasliu/Desktop/DrChen_Projects/CA_Arrest _Project/Data/IRIS/IRIS_Correlation_ProportionMissing_SimData/MissingPerc_SimData"
-ID_data_dir <- "/Users/lucasliu/Desktop/DrChen_Projects/CA_Arrest _Project/Data/IRIS"
+data_dir <- "/CA_Arrest _Project/Data/IRIS/IRIS_Correlation_ProportionMissing_SimData/MissingPerc_SimData"
+ID_data_dir <- "/Data/IRIS"
 All_data<- read.csv(paste0(data_dir, "/",5,"perc_missingSimData.csv"),stringsAsFactors = F)
 rownames(All_data) <- All_data$X
 All_data <- All_data[,-1]
@@ -7,11 +7,11 @@ Train_IDs<- read.csv(paste0(ID_data_dir, "/trainWithoutHidden_IDs.csv"),stringsA
 Train_Data <- All_data[which(rownames(All_data) %in% Train_IDs$x),]
 outcome_name_index <- which(colnames(Train_Data) == "Species")
 
-data_dir <- "/Users/lucasliu/Desktop/DrChen_Projects/CA_Arrest _Project/Data/IRIS/IRIS_Correlation_ProportionMissing_SimData/MissingPerc_SimData/"
+data_dir <- "/CA_Arrest _Project/Data/IRIS/IRIS_Correlation_ProportionMissing_SimData/MissingPerc_SimData/"
 file_names <- paste0(5,"perc_missingSimData.csv")
 
 #Read filterd sublist
-all_togher_dir <- "/Users/lucasliu/Desktop/DrChen_Projects/CA_Arrest _Project/Data/IRIS/IRIS_Correlation_ProportionMissing_SimData/Filtered_Sublist_HiddenSetEx/"
+all_togher_dir <- "CA_Arrest _Project/Data/IRIS/IRIS_Correlation_ProportionMissing_SimData/Filtered_Sublist_HiddenSetEx/"
 resolution_dir <- "resolution_dividedbymax/"
 all_togehter_df_file_names <- list.files(paste0(all_togher_dir,resolution_dir))
 
