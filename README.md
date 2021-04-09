@@ -1,2 +1,2 @@
-# ELMV: an Ensemble-Learning Approach for Analyzing ElectricalHealth Records with Significant Missing Values
+# ELMV: an Ensemble-Learning Approach for Analyzing EHR with Significant Missing Values
  
